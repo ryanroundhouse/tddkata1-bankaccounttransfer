@@ -3,9 +3,11 @@ import Transaction from "./Transaction";
 
 export class Ledger{
     findTransactionsByAccount(account: Account) : Transaction[] {
-        return [];
+        return this.transactions.filter((transaction) => {
+            return transaction.sourceAccount === account || transaction.targetAccount === account;
+        });
     }
-    transactions: Transaction[] = []
+    transactions: Transaction[] = [];
 }
 
 export default Ledger;
